@@ -3,7 +3,7 @@ import { GlobalStyle } from "./GlobalStyle";
 import { Layout } from "./Layout/Layout";
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+import { Filter } from "./Filter/Filter";
 
 export const App = () => {
 
@@ -18,3 +18,4 @@ export const App = () => {
     </Layout>
   )
 };
+

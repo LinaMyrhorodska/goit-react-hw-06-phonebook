@@ -2,11 +2,17 @@ import { ContactItem, ContactName, ContactNumber, ContactBtn } from './ContactLi
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contactsSlice';
 import { useSelector } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
+import { getContacts, getFilter } from '../../redux/selectors';
+
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const dispatch = useDispatch();
+    const contacts = useSelector(getContacts);
+    const filter = useSelector(getFilter);
+    const dispatch = useDispatch();
+    
+    const filteredContacts = contacts?.filter(contact =>
+    contact?.name?.toLowerCase().includes(filter.toLowerCase())
+  );
 
   const handleDelete = (id) => {
     dispatch(deleteContact(id));
@@ -14,7 +20,7 @@ export const ContactList = () => {
     
   return (
         <ul>
-            {contacts.map(contact => {
+            {filteredContacts.map(contact => {
                 return (
                     <ContactItem key={contact.id}>
                         <ContactName>{contact.name}:</ContactName>
