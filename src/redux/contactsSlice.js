@@ -16,6 +16,8 @@ const contactsSlice = createSlice({
     addContact: (state, action) => {
       const newContact = { id: nanoid(), ...action.payload };
       state.items.push(newContact);
+
+
     },
     deleteContact: (state, action) => {
       const index = state.items.findIndex(contact => contact.id === action.payload);
